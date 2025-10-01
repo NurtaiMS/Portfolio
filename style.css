@@ -1,0 +1,303 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  background: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* BACKGROUND CIRCLES */
+.circle {
+  position: absolute;
+  background: #f4b400;
+  border-radius: 50%;
+  opacity: 0.2;
+  z-index: 0;
+}
+.circle1 { width: 200px; height: 200px; top: 50px; left: 30px; }
+.circle2 { width: 100px; height: 100px; top: 200px; right: 50px; }
+.circle3 { width: 150px; height: 150px; bottom: 100px; left: 100px; }
+.circle4 { width: 80px; height: 80px; bottom: 200px; right: 150px; }
+
+/* BUTTONS */
+.btn {
+  background: #f4b400;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn:hover {
+  background: #d89e00;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+/* HERO */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 80px 10%;
+  background: #fff;
+  gap: 30px;
+}
+.hero .text h1 {
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+}
+.hero .text span {
+  color: #f4b400;
+}
+.hero .image img {
+  width: 280px;
+  height: 280px; /* чтобы был квадрат */
+  border-radius: 50%; /* делает круглым */
+  object-fit: cover; /* изображение не искажается */
+  border: 5px solid #f4b400; /* желтая рамка */
+  transition: transform 0.5s ease;
+}
+
+.hero .image img:hover {
+  transform: scale(1.05) rotate(2deg);
+}
+
+/* ABOUT ME */
+.about-me {
+  background: #fff;
+  border-radius: 20px;
+  padding: 30px 25px;
+  margin: 30px 10%;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+.about-me:hover {
+  transform: scale(1.02);
+}
+.about-me h2 {
+  font-size: 1.8rem;
+  color: #f4b400;
+  margin-bottom: 15px;
+  text-align: center;
+}
+.about-me p {
+  color: #333;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* BIOGRAPHY */
+.biography {
+  background: #fff;
+  border-radius: 20px;
+  padding: 30px 25px;
+  margin: 30px 10%;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+.biography:hover {
+  transform: scale(1.02);
+}
+.biography h2 {
+  font-size: 1.8rem;
+  color: #f4b400;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.bio-items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 карточки в ряд */
+  gap: 20px;
+  padding: 20px;
+}
+
+.bio-item {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+.bio-item:hover {
+  transform: scale(1.03);
+}
+
+.bio-item img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.bio-item .bio-text {
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #333;
+  text-align: left;
+}
+
+/* CONTACT */
+.contact {
+  padding: 60px 10%;
+  background: #fff;
+  margin: 50px 0;
+  text-align: center;
+  border-radius: 25px;
+}
+.contact form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.contact input,
+.contact textarea {
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  transition: border 0.3s ease;
+}
+.contact input:focus,
+.contact textarea:focus {
+  border-color: #f4b400;
+}
+
+/* SOCIALS */
+.socials {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.socials a {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 22px;
+  color: white;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.socials .whatsapp { background: #25d366; }
+.socials .instagram {
+  background: radial-gradient(circle at 30% 107%, 
+  #fdf497 0%, #fdf497 5%, #fd5949 45%, 
+  #d6249f 60%, #285AEB 90%);
+}
+.socials .telegram { background: #0088cc; }
+.socials .email { background: #f4b400; }
+
+.socials a.email {
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
+  padding: 0;
+}
+.socials a.email .email-text {
+  position: absolute;
+  left: 60px;
+  color: #333;
+  font-weight: bold;
+  white-space: nowrap;
+  opacity: 0;
+  transition: all 0.4s ease;
+  z-index: 10;
+}
+.socials a.email:hover .email-text {
+  opacity: 1;
+}
+.socials a:not(.email):hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+}
+
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 10%;
+  z-index: 1000;
+}
+.navbar .logo {
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: #f4b400;
+}
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+.navbar ul li a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #333;
+  transition: color 0.3s;
+}
+.navbar ul li a:hover {
+  color: #f4b400;
+}
+
+/* OFFSET для fixed navbar */
+#about, #biography, #contact {
+  scroll-margin-top: 90px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #f4b400;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 50px 5%;
+  }
+  .hero .image img {
+    width: 200px;
+  }
+  .bio-items {
+    grid-template-columns: 1fr; /* одна карточка на маленьких экранах */
+  }
+  .navbar ul {
+    gap: 15px;
+  }
+}

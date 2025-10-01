@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* RESET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .circle {
+      position: absolute;
+      background: #f4b400;
+      border-radius: 50%;
+      opacity: 0.2;
+      z-index: -1;
+    }
+    .circle1 { width: 200px; height: 200px; top: 50px; left: 30px; }
+    .circle2 { width: 100px; height: 100px; top: 200px; right: 50px; }
+    .circle3 { width: 150px; height: 150px; bottom: 100px; left: 100px; }
+    .circle4 { width: 80px; height: 80px; bottom: 200px; right: 150px; }
+
+    /* NAVBAR */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 10%;
+      z-index: 1000;
+    }
+    .navbar .logo { font-weight: bold; font-size: 1.3rem; color: #f4b400; }
+    .navbar ul { list-style: none; display: flex; gap: 30px; }
+    .navbar ul li a {
+      text-decoration: none;
+      font-weight: bold;
+      color: #333;
+      transition: color 0.3s;
+    }
+    .navbar ul li a:hover { color: #f4b400; }
+
+    /* Отступ для фиксированного navbar */
+    #about, #biography, #contact {
+      scroll-margin-top: 80px;
+    }
+
+    /* HERO */
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 100px 10% 50px;
+      background: #fff;
+      gap: 30px;
+      margin-top: 70px;
+    }
+    .hero .text h1 { font-size: 2.8rem; margin-bottom: 10px; }
+    .hero .text span { color: #f4b400; }
+    .hero .image img { width: 280px; border-radius: 50%; transition: transform 0.5s ease; }
+    .hero .image img:hover { transform: scale(1.05) rotate(2deg); }
+
+    /* ABOUT ME */
+    .about-me {
+      padding: 60px 10%;
+      background: #fff;
+      border-radius: 25px;
+      margin: 20px 10%;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+    .about-me h2 { font-size: 2rem; margin-bottom: 20px; text-align: center; }
+    .about-me p { font-size: 1.1rem; line-height: 1.6; text-align: center; }
+    .highlight { color: #f4b400; font-weight: bold; }
+
+    /* BIOGRAPHY */
+    #biography {
+      padding: 60px 10%;
+    }
+    .biography h2 { text-align: center; font-size: 2rem; margin-bottom: 30px; }
+    .bio-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .bio-item {
+      background: #fff;
+      padding: 15px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .bio-item:hover { transform: scale(1.02); }
+    .bio-item img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+    .bio-text { font-size: 1rem; color: #333; text-align: left; }
+
+    /* CONTACT */
+    #contact {
+      padding: 60px 10%;
+      background: #fff;
+      margin: 50px 0;
+      text-align: center;
+      border-radius: 25px;
+    }
+    .contact form { max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
+    .contact input, .contact textarea {
+      padding: 12px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      outline: none;
+      transition: border 0.3s ease;
+    }
+    .contact input:focus, .contact textarea:focus { border-color: #f4b400; }
+    .btn {
+      background: #f4b400;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .btn:hover { background: #d89e00; transform: translateY(-3px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
+
+    /* SOCIALS */
+    .socials { margin-top: 25px; display: flex; justify-content: center; gap: 20px; }
+    .socials a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50px; height: 50px;
+      border-radius: 50%;
+      font-size: 22px;
+      color: white;
+      transition: all 0.3s ease;
+    }
+    .socials .whatsapp { background: #25d366; }
+    .socials .instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%); }
+    .socials .telegram { background: #0088cc; }
+    .socials .email {
+      background: #f4b400;
+      position: relative;
+      overflow: visible;
+      padding-left: 12px;
+    }
+    .socials a.email i { transition: all 0.3s ease; }
+    .socials a.email .email-text { position: absolute; left: 60px; color: #333; font-weight: bold; white-space: nowrap; opacity: 0; transition: all 0.4s ease; }
+    .socials a.email:hover i { transform: translateX(5px); }
+    .socials a.email:hover .email-text { opacity: 1; }
+
+    /* FOOTER */
+    footer { text-align: center; padding: 20px; background: #f4b400; color: #fff; font-weight: bold; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero { flex-direction: column; text-align: center; padding: 50px 5%; }
+      .hero .image img { width: 200px; }
+      .bio-items { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Circles -->
+  <div class="circle circle1"></div>
+  <div class="circle circle2"></div>
+  <div class="circle circle3"></div>
+  <div class="circle circle4"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">SCA-24C</div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#biography">Biography</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HEADER -->
+ <header class="hero">
+  <div class="text">
+    <h1>Hello, my name is <span>Nurtai</span></h1>
+    <p>Ala-Too University student</p>
+  </div>
+  <div class="image">
+    <img src="images/face.jpeg" alt="Profile photo">
+  </div>
+</header>
+
+
+  <!-- ABOUT ME -->
+  <section id="about" class="about-me">
+    <h2>About Me</h2>
+    <p>
+      My name is <strong>Turatbekov Nurtai</strong>. I am 17 years old and currently studying in Ala-Too.  
+      I’m passionate about <span class="highlight">backend development</span>, especially with Java and Spring Boot.  
+      In the future, I want to grow as a professional developer and create useful applications that help people.
+    </p>
+  </section>
+
+  <!-- BIOGRAPHY -->
+  <section id="biography" class="biography">
+    <h2>Biography</h2>
+    <div class="bio-items">
+      <div class="bio-item">
+        <div class="bio-text">
+          <strong>👶 Born in Bishkek</strong><br>
+          I was born on November 10, 2008, in the capital city of Kyrgyzstan. From a young age, I was curious about how things work and loved learning new skills.
+        </div>
+      </div>
+
+      <div class="bio-item">
+        <img src="images/school_117.jpg" alt="School">
+        <div class="bio-text">
+          <strong>🏫 School No.117</strong><br>
+          I studied at School No.117, where I discovered my interest in technology and programming. I left after the 9th grade to continue my education in a more specialized environment.
+        </div>
+      </div>
+
+      <div class="bio-item">
+        <img src="images/Novopavlovka.jpg" alt="Home">
+        <div class="bio-text">
+          <strong>🏠 Living in Novopavlovka</strong><br>
+          I currently live in Novopavlovka, where I spend my free time exploring programming tutorials, creating small projects, and learning new technologies.
+        </div>
+      </div>
+
+      <div class="bio-item">
+        <img src="images/Ala-Too.jpg" alt="College">
+        <div class="bio-text">
+          <strong>🎓 Ala-Too College</strong><br>
+          I am now enrolled in Ala-Too College, focusing on backend development. My goal is to become a skilled developer and build useful applications that can help people in their daily lives.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <h2>Contact Me</h2>
+    <form>
+      <input type="text" placeholder="Your name" required>
+      <input type="email" placeholder="Your email" required>
+      <textarea placeholder="Your message"></textarea>
+      <button type="submit" class="btn">Send</button>
+    </form>
+
+    <div class="socials">
+      <a href="https://wa.me/996770848415" target="_blank" class="whatsapp" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+
+      <a href="https://www.instagram.com/mcz_nurtai3/" target="_blank" class="instagram" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+
+      <a href="https://t.me/mczNovopav" target="_blank" class="telegram" aria-label="Telegram">
+        <i class="fab fa-telegram"></i>
+      </a>
+
+      <a href="mailto:turatbekovnurtaj@gmail.com" class="email" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+        <span class="email-text">turatbekovnurtaj@gmail.com</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 AIU </p>
+  </footer>
+</body>
+</html>
