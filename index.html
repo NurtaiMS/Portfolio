@@ -205,14 +205,28 @@
   <div class="circle circle4"></div>
 
   <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="logo">SCA-24C</div>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#biography">Biography</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+ <nav class="navbar">
+  <div class="logo">SCA-24C</div>
+
+  <ul class="menu">
+    <li><a href="#about">About</a></li>
+    <li><a href="#biography">Biography</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+
+  <!-- Переключатель темы -->
+  <button id="theme-toggle" class="theme-btn" aria-label="Переключить тему">
+  <span class="sun">🌞</span>
+  <span class="moon">🌙</span>
+</button>
+
+
+  <!-- Гамбургер -->
+  <button class="hamburger" aria-expanded="false" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
 
   <!-- HEADER -->
  <header class="hero">
@@ -310,5 +324,6 @@
   <script src="greeting.js"></script>
 </body>
 </html>
+
 
 
