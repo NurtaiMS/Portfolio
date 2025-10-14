@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // === Приветствие ===
   const greeting = document.getElementById('greeting');
   const askNameButton = document.getElementById('askName');
 
@@ -18,12 +19,56 @@ document.addEventListener("DOMContentLoaded", () => {
 
   askNameButton.addEventListener('click', askName);
 
-  // Если имя сохранено — показываем приветствие
   const savedName = localStorage.getItem('userName');
   if (savedName) {
     showGreeting(savedName);
   } else {
-    // Если имени нет — сразу спрашиваем
     askName();
   }
+
+  // === Переключатель темы ===
+  const themeToggle = document.getElementById('theme-toggle');
+  const body = document.body;
+
+  // Проверяем, сохранена ли тема
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+    body.classList.add(savedTheme);
+  } else {
+    body.classList.add('light');
+  }
+
+  // Функция обновления иконки
+  function updateIcons() {
+    const sun = themeToggle.querySelector('.sun');
+    const moon = themeToggle.querySelector('.moon');
+    if (body.classList.contains('dark')) {
+      sun.style.display = 'none';
+      moon.style.display = 'inline';
+    } else {
+      sun.style.display = 'inline';
+      moon.style.display = 'none';
+    }
+  }
+
+  updateIcons();
+
+  // Переключение темы при клике
+  themeToggle.addEventListener('click', () => {
+    if (body.classList.contains('light')) {
+      body.classList.replace('light', 'dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      body.classList.replace('dark', 'light');
+      localStorage.setItem('theme', 'light');
+    }
+    updateIcons();
+  });
+});
+const hamburger = document.querySelector('.hamburger');
+const menu = document.querySelector('.menu');
+
+hamburger.addEventListener('click', () => {
+  menu.classList.toggle('active');   // Показываем/скрываем меню
+  hamburger.classList.toggle('active'); // Анимация гамбургера
 });
