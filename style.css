@@ -323,7 +323,7 @@ footer {
 }
 
 /* RESPONSIVE */
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .hero {
     flex-direction: column;
     text-align: center;
@@ -339,3 +339,244 @@ footer {
     gap: 15px;
   }
 }
+/* THEME TOGGLE BUTTON */
+.theme-btn {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  background: #f4b400;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: background 0.4s ease;
+}
+
+.theme-btn:hover {
+  background: #d89e00;
+}
+
+/* Иконки солнца и луны */
+.theme-btn .sun,
+.theme-btn .moon {
+  position: absolute;
+  font-size: 24px;
+  transition: transform 0.5s ease, opacity 0.4s ease;
+}
+
+/* Светлая тема — видим солнце */
+body:not(.dark) .sun {
+  opacity: 1;
+  transform: translateY(0);
+}
+body:not(.dark) .moon {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* Тёмная тема — видим луну */
+body.dark .sun {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+body.dark .moon {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Плавный переход для темы */
+body {
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+/* Светлая тема */
+body.light {
+  background: #f9f9f9; /* светлый фон */
+  color: #333;          /* тёмный текст */
+}
+
+/* Тёмная тема — Чёрно-жёлтая */
+/* === Ночная тема — Чёрно-жёлтая === */
+body.dark {
+  background: #000;       /* чёрный фон */
+  color: #f4b400;         /* жёлтый текст */
+}
+/* Гамбургер полоски для тёмной темы */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  background: #333; /* светлая тема */
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+/* Тёмная тема */
+body.dark .hamburger span {
+  background: #f4b400;
+}
+
+/* Анимация при активном меню */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+
+/* Секции и карточки */
+body.dark .about-me,
+body.dark .biography,
+body.dark .bio-item,
+body.dark #contact,
+body.dark .hero,
+body.dark #hello-section {
+  background: #000;       /* чёрный фон */
+  color: #f4b400;         /* жёлтый текст */
+  border: 1px solid #f4b400; /* жёлтая рамка */
+}
+
+/* Текст внутри карточек и секций */
+body.dark .about-me p,
+body.dark .bio-text,
+body.dark #hello-section h2,
+body.dark #hello-section h3,
+body.dark .contact form input,
+body.dark .contact form textarea,
+body.dark footer {
+  color: #f4b400;         /* жёлтый текст */
+}
+
+/* Кнопки и акценты */
+body.dark .btn,
+body.dark .navbar .logo,
+body.dark .highlight {
+  background: #f4b400;    /* жёлтый фон */
+  color: #000;            /* чёрный текст на жёлтом */
+}
+
+/* Навбар и ссылки */
+body.dark .navbar {
+  background: #000;
+  color: #f4b400;
+}
+body.dark .navbar ul li a {
+  color: #f4b400;
+}
+
+/* Футер */
+body.dark footer {
+  background: #000;
+  color: #f4b400;
+}
+
+/* Социальные иконки */
+body.dark .socials a {
+  border: 1px solid #f4b400;
+  color: #f4b400;
+}
+body.dark .socials a.email {
+  background: #f4b400;
+  color: #000;
+}
+
+/* Картинки с рамкой */
+body.dark .bio-item img,
+body.dark .hero .image img {
+  border: 3px solid #f4b400;
+}
+
+/* Таблицы */
+body.dark table {
+  background: #000;
+  color: #f4b400;
+}
+body.dark table th,
+body.dark table td {
+  border: 1px solid #f4b400;
+}
+/* Медиазапрос для мобильного меню */
+@media (max-width: 768px) {
+  .navbar ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: absolute;
+    top: 60px;
+    right: 10%;
+    width: 200px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    opacity: 0;               /* скрыто */
+    transform: translateY(-20px); /* немного смещено вверх */
+    pointer-events: none;     /* чтобы нельзя было кликнуть, пока скрыто */
+    transition: all 0.3s ease;
+  }
+
+  .navbar ul.active {
+    opacity: 1;               /* видимо */
+    transform: translateY(0); /* на месте */
+    pointer-events: auto;     /* кликабельно */
+  }
+
+  .navbar ul li {
+    text-align: center;
+    padding: 15px 0;
+  }
+}
+
+
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 20px;
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
+
+  .hamburger span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: #333; /* светлая тема */
+    border-radius: 3px;
+    transition: all 0.3s ease;
+  }
+
+  /* Анимация открытого гамбургера */
+  .hamburger.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .hamburger.open span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  /* Для темной темы */
+  body.dark .hamburger span {
+    background: #f4b400;
+  }
