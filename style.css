@@ -580,3 +580,136 @@ body.dark table td {
   body.dark .hamburger span {
     background: #f4b400;
   }
+/* === Кнопка "Наверх" === */
+#scrollTopBtn {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  width: 50px;
+  height: 50px;
+  background: #f4b400;
+  color: #000;
+  border: none;
+  border-radius: 50%;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  display: none; /* по умолчанию скрыта */
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+#scrollTopBtn:hover {
+  background: #d89e00;
+  transform: translateY(-3px);
+}
+
+/* Тёмная тема */
+body.dark #scrollTopBtn {
+  background: #000;
+  color: #f4b400;
+  border: 1px solid #f4b400;
+}
+body.dark #scrollTopBtn:hover {
+  background: #111;
+}
+/* === ГАМБУРГЕР === */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: #333;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Анимация открытия */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translateY(8px);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-8px);
+}
+
+/* При тёмной теме — полоски жёлтые */
+body.dark .hamburger span {
+  background: #f4b400;
+}
+
+/* Меню для мобильных */
+@media (max-width: 900px) {
+  .navbar ul {
+    position: absolute;
+    top: 70px;
+    right: -100%;
+    background: #fff;
+    flex-direction: column;
+    width: 200px;
+    text-align: center;
+    padding: 20px;
+    gap: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: right 0.4s ease;
+  }
+
+  .navbar ul.active {
+    right: 10%;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+/* === КНОПКА “НАВЕРХ” === */
+#scrollTopBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  background: #f4b400;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+  z-index: 1200;
+}
+
+#scrollTopBtn:hover {
+  background: #d89e00;
+  transform: translateY(-4px);
+}
+
+/* При тёмной теме — кнопка жёлтая с чёрной стрелкой */
+body.dark #scrollTopBtn {
+  background: #f4b400;
+  color: #000;
+}
+
+
+
