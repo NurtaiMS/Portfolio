@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+ document.addEventListener("DOMContentLoaded", () => {
   // === Приветствие ===
   const greeting = document.getElementById('greeting');
   const askNameButton = document.getElementById('askName');
@@ -30,7 +30,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const themeToggle = document.getElementById('theme-toggle');
   const body = document.body;
 
-  // Проверяем, сохранена ли тема
   const savedTheme = localStorage.getItem('theme');
   if (savedTheme) {
     body.classList.add(savedTheme);
@@ -38,7 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
     body.classList.add('light');
   }
 
-  // Функция обновления иконки
   function updateIcons() {
     const sun = themeToggle.querySelector('.sun');
     const moon = themeToggle.querySelector('.moon');
@@ -53,7 +51,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updateIcons();
 
-  // Переключение темы при клике
   themeToggle.addEventListener('click', () => {
     if (body.classList.contains('light')) {
       body.classList.replace('light', 'dark');
@@ -64,11 +61,31 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     updateIcons();
   });
-});
-const hamburger = document.querySelector('.hamburger');
-const menu = document.querySelector('.menu');
 
-hamburger.addEventListener('click', () => {
-  menu.classList.toggle('active');   // Показываем/скрываем меню
-  hamburger.classList.toggle('active'); // Анимация гамбургера
+  // === Гамбургер ===
+  const hamburger = document.querySelector('.hamburger');
+  const menu = document.querySelector('.menu');
+
+  hamburger.addEventListener('click', () => {
+    menu.classList.toggle('active');   
+    hamburger.classList.toggle('active'); 
+  });
+
+  // === Кнопка "Наверх" ===
+  const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      scrollTopBtn.style.display = "flex";
+    } else {
+      scrollTopBtn.style.display = "none";
+    }
+  });
+
+  scrollTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
 });
